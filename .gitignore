@@ -1,0 +1,8 @@
+# output files from the barcode generator
+*.eps
+*.pdf
+
+# editor tempfiles. 
+*.swp
+\#*
+*~

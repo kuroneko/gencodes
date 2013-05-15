@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler/setup'
+require 'barby'
+require 'barby/barcode/qr_code'
+require 'barby/outputter/cairo_outputter'
+require 'yaml'
+
+if ARGV.length != 1
+  print "Usage: $0 <filename>\n"
+  exit 1
+end
+
+ydoc = nil
+File.open(ARGV[0]) do |f|
+  ydoc = YAML.load(f)
+end
+
+defaults = {}
+if ydoc.include?("defaults")
+  defaults = ydoc["defaults"]
+end
+
+print "Defaults: #{defaults}\n"
+
+codes = ydoc["codes"]
+
+codes.each_pair do |fileprefix,data|
+  fulldata = defaults.merge(data)
+  mecardkeys = fulldata.map{|k,v| "#{k}:#{v}"}
+
+
+  mecard = "MECARD:#{mecardkeys.join(";")};;"
+  print "======\n"
+  print "  For #{fileprefix}\n"
+  print "  -- DATA: #{mecard}\n"
+  barcode = Barby::QrCode.new(mecard, :level => :l)
+  File.open("#{fileprefix}.eps", "w") do |fh|
+    fh.write(barcode.to_eps)
+  end
+  File.open("#{fileprefix}.pdf", "w") do |fh|
+    fh.write(barcode.to_pdf)
+  end
+end
+

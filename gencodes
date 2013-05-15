@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+#
+# gencodes
+#
+# Copyright (C) 2013, Chris Collins <chrisc@vrlaw.com.au>
+#
 require 'rubygems'
 require 'bundler/setup'
 require 'barby'

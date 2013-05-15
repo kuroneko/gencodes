@@ -1,0 +1,15 @@
+# vim: set sw=4 sts=4 et:
+defaults:
+    ORG: "Foobar Inc."
+    TEL: "+61499999999"
+    ADR: ",,22 Somewhere St,Nowhere,NSW,2888,Australia"
+    URL: http://www.foobarinc.com/
+
+codes:
+    jb:
+        N: Bloggs,Joe
+        EMAIL: jbloggs@foobarinc.com
+    sb:
+        N: Bloggs,Sam
+        EMAIL: sbloggs@foobarinc.com
+        TEL: "+61422999666"

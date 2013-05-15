@@ -9,9 +9,18 @@ Uses Ruby, Barby, Cairo + rqrcode.
 
 Tested with 1.9.3 only.
 
+## Set-up
+
+Make sure you have the cairo headers + bundler installed.
+
+	bundle install --deployment
+
 ## Running
 
 	./gencards <my-yaml-file>
+
+This will spit out pairs of PDF and EPS files for each of the 'codes'
+specified.
 
 ## File Format
 
